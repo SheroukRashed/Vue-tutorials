@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <div id="app">
+        <h2 v-bind:title="message">my title</h2>
+        <h3>{{ product }}</h3>
+        <h3 v-text="product"></h3>
+        <h3 v-once>{{product}}</h3>
+        <div v-for="item in items" v-text="item">
+        </div>
+        <div v-for="emp in emps">
+                {{emp.name}}
+        </div>
+        <div v-if="count==0">
+                Zer0
+        </div>
+        <div v-else-if="count==1">
+                One
+        </div>
+        <div v-else>
+                Non
+        </div>
+        <div v-show="count==-1">
+                Still in dom even if not true
+        </div>
+        <input type="text" v-model="product" :class="[product.length < 2 ? 'red' : 'green']">
+        <button v-on:click="reverse" v-bind:disabled="emps.length < 2">Reverse</button>
+        <br><br>
+        <input type="text" v-model="empName" v-on:keyup.Enter="addEmpName">
+        <div v-for="emp in emps">
+                <li v-text="emp.name"></li>
+        </div>
+        <br><br>
+        <my-list
+        v-for="dog in dogs"
+        :doggy="dog"
+        :key="dog.id"></my-list>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src='main.js'></script>
+</body>
+</html>
+
+<!-- v-bind: == : -->
+<!-- v-html -->
+<!-- v-on: == @ -->
